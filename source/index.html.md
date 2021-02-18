@@ -1,15 +1,11 @@
 ---
-title: API Reference
+title: 외근기록보드 API
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - ecplaza
 
 includes:
   - errors
@@ -19,223 +15,79 @@ search: true
 code_clipboard: true
 ---
 
-# Introduction
+# Overview
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+##외근기록보드
+- 외근 기록 목록을 가져올 수 있는 API 입니다.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+항목명 | 값 
+---------- | ----------
+개발언어 | JAVA
+데이터베이스 | MariaDB
+운영체제 | Window10
+도구 | STS
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+# Request
+###요청주소
+GET 
+###요청메소드
+http://<code>domain</code>/api/v1/outworks
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+ <code>domain</code> 자리에 주소가 채워져야 합니다.
 </aside>
 
-# Kittens
+# Respond
+## 외근목록 얻어오기
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
+> 아래와 같은 JSON 구조를 return 합니다:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "status": 1,
+  "data":[
+        {
+          "name": "임다은", 
+          "phone": "01000000000", 
+          "destination": "본사",
+          "type":"외근",
+          "latitude" : "37.5277834127565", 
+          "longitude": "127.12157116767759",
+          "description": "외근보드견학", 
+          "start_time": "2021-02-15 10:10",  
+          "finish_time": "2021-02-15 11:10",
+        } 
+  ],
+  "message": "success",
+}
+
 ```
 
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+외근 기록의 목록을 얻어옵니다.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+IP로 접근을 제어해 허용된 사용자만이 접근 가능합니다.
 </aside>
 
-## Get a Specific Kitten
+### 출력결과
 
-```ruby
-require 'kittn'
+항목명 | 값 | 설명 
+---------- | ---------- | ----------
+status | Integer | 상태
+data | 배열 | 외근 정보 배열 
+message | String | 오류 메시지
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+### data
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+항목명 | 값 | 설명 | 기타
+---------- | ---------- | ---------- | ----------
+name | String | 사원명 |
+phone | String | 전화번호 |
+destination | String | 행선지 |
+latitude | String | 현 위치(위도) |
+longitude | String | 현 위치(경도) |
+type | String | 외근유형 |
+description | String | 용무 |
+start_time | String | 시작시각 | yyyy-MM-dd HH:mm
+finish_time | String | 종료시각 | yyyy-MM-dd HH:mm

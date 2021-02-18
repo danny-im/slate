@@ -1,22 +1,11 @@
 # Errors
 
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-The Kittn API uses the following error codes:
-
-
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+에러코드 | 메시지 | 설명
+---------- | ---------- | -------
+Permission_denied | 위치 정보 공유가 허용되지 않았습니다. | 사용자가 위치 정보 공유를 허가하지 않은 경우 발생
+Position_unavailable | 알 수 없는 위치입니다. | 사용자 위치 판단 실패 시 발생
+Unknown_error  | 알 수 없는 오류가 발생했습니다. | 알 수 없는 오류 발생
+Timeout | 허용 시간을 초과했습니다. | 위치 정보를 가져오기 위한 요청이 허용시간을 초과함
+unauthorized_client | 인증되지 않은  API입니다. | 인증되지 않은 api
+invalid_client | 인증에 실패했습니다. | 인증 실패
+invalid_request | 잘못된 요청입니다. | 잘못된 요청
