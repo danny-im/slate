@@ -25,7 +25,7 @@ code_clipboard: true
 개발언어 | JAVA
 데이터베이스 | MariaDB
 운영체제 | Window10
-도구 | STS
+도구 | IntelliJ
 
 
 # Request
@@ -55,8 +55,8 @@ http://<code>domain</code>/api/v1/outworks
           "latitude" : "37.5277834127565", 
           "longitude": "127.12157116767759",
           "description": "외근보드견학", 
-          "start_time": "2021-02-15 10:10",  
-          "finish_time": "2021-02-15 11:10",
+          "start_time": "2021-02-15 10:10:05",  
+          "finish_time": "2021-02-15 11:10:45",
         } 
   ],
   "message": "success",
@@ -89,5 +89,5 @@ latitude | String | 현 위치(위도) |
 longitude | String | 현 위치(경도) |
 type | String | 외근유형 |
 description | String | 용무 |
-start_time | String | 시작시각 | yyyy-MM-dd HH:mm
-finish_time | String | 종료시각 | yyyy-MM-dd HH:mm
+start_time | String | 시작시각 | yyyy-MM-dd HH:mm:ss
+finish_time | String | 종료시각 | yyyy-MM-dd HH:mm:ss
