@@ -387,21 +387,25 @@
 <p>아래와 같은 JSON 구조를 return 합니다:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"성공 코드"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="err"> </span><span class="s2">"임다은"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"phone"</span><span class="p">:</span><span class="err"> </span><span class="s2">"01000000000"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"destination"</span><span class="p">:</span><span class="err"> </span><span class="s2">"본사"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"외근"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"latitude"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"37.5277834127565"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"longitude"</span><span class="p">:</span><span class="err"> </span><span class="s2">"127.12157116767759"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"description"</span><span class="p">:</span><span class="err"> </span><span class="s2">"외근보드견학"</span><span class="p">,</span><span class="w"> 
-          </span><span class="nl">"start_time"</span><span class="p">:</span><span class="err"> </span><span class="s2">"2021-02-15 10:10:05"</span><span class="p">,</span><span class="w">  
-          </span><span class="nl">"finish_time"</span><span class="p">:</span><span class="err"> </span><span class="s2">"2021-02-15 11:10:45"</span><span class="p">,</span><span class="w">
-        </span><span class="p">}</span><span class="w"> 
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"홍길동"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"position_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"인턴"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"department_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"연구개발팀"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"010-0000-0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"본사"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.11512630000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.5348694"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"outwork_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"외근"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"회의실 PC 설치"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-08 09:26:00.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"finish_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-08 06:00:00.0"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -444,13 +448,37 @@ IP로 접근을 제어해 허용된 사용자만이 접근 가능합니다.
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
-<td>String</td>
-<td>사원명</td>
+<td>num</td>
+<td>int</td>
+<td>외근번호</td>
 <td></td>
 </tr>
 <tr>
-<td>phone</td>
+<td>user_id</td>
+<td>int</td>
+<td>회원번호</td>
+<td></td>
+</tr>
+<tr>
+<td>user_name</td>
+<td>int</td>
+<td>이름</td>
+<td></td>
+</tr>
+<tr>
+<td>position_name</td>
+<td>String</td>
+<td>직책</td>
+<td></td>
+</tr>
+<tr>
+<td>department_name</td>
+<td>String</td>
+<td>부서명</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile_phone</td>
 <td>String</td>
 <td>전화번호</td>
 <td></td>
@@ -462,19 +490,19 @@ IP로 접근을 제어해 허용된 사용자만이 접근 가능합니다.
 <td></td>
 </tr>
 <tr>
-<td>latitude</td>
-<td>String</td>
-<td>현 위치(위도)</td>
-<td></td>
-</tr>
-<tr>
 <td>longitude</td>
 <td>String</td>
 <td>현 위치(경도)</td>
 <td></td>
 </tr>
 <tr>
-<td>type</td>
+<td>latitude</td>
+<td>String</td>
+<td>현 위치(위도)</td>
+<td></td>
+</tr>
+<tr>
+<td>tyoutwork_typepe</td>
 <td>String</td>
 <td>외근유형</td>
 <td></td>
